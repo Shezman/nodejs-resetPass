@@ -1,3 +1,4 @@
+require('dotenv').config();
 var session = require('express-session');
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
@@ -127,8 +128,7 @@ app.post('/forgot', function(req, res, next) {
         var smtpTransport = nodemailer.createTransport(
           sendgridTransport({
             auth: {
-              api_key:
-                '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'
+              api_key: process.env.api_key
             }
           })
         );
@@ -216,8 +216,7 @@ app.post('/reset/:token', function(req, res, next) {
         var smtpTransport = nodemailer.createTransport(
           sendgridTransport({
             auth: {
-              api_key:
-                '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'
+              api_key: process.env.api_key
             }
           })
         );
